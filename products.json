@@ -1,0 +1,43 @@
+[
+    {
+      "id": 1,
+      "name": "Smartphone",
+      "price": 699.99,
+      "image": "https://cdn.thewirecutter.com/wp-content/media/2024/05/smartphone-2048px-1013.jpg",
+      "description": "Latest smartphone with all features.",
+      "category": "electronics"
+    },
+    {
+      "id": 2,
+      "name": "Laptop",
+      "price": 1199.99,
+      "image": "https://www.techtarget.com/rms/onlineimages/hp_elitebook_mobile.jpg",
+      "description": "High performance laptop.",
+      "category": "electronics"
+    },
+    {
+      "id": 3,
+      "name": "T-shirt",
+      "price": 19.99,
+      "image": "https://nobero.com/cdn/shop/files/black_e4d19185-c19d-4e7c-a14a-8d2a29c7bad3.jpg",
+      "description": "Comfortable cotton t-shirt.",
+      "category": "fashion"
+    },
+    {
+      "id": 4,
+      "name": "Blender",
+      "price": 49.99,
+      "image": "https://via.placeholder.com/250",
+      "description": "High-speed blender for smoothies.",
+      "category": "home"
+    },
+    {
+      "id": 5,
+      "name": "CarPlay Screen",
+      "price": 2900,
+      "image": "/images/carplay_screen.jpg",
+      "description": "Remote control toy car.",
+      "category": "electronics"
+    }
+  ]
+  

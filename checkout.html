@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - LemonStore</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Full height */
+        }
+        .header {
+            background-color: #232F3E;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #FFD814;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            text-decoration: none;
+        }
+        .main-content {
+            flex: 1; /* This allows the content to grow */
+            display: flex;
+            justify-content: center; /* Center the checkout container */
+            padding: 20px;
+        }
+        .checkout-container {
+            width: 100%; /* Full width */
+            max-width: 600px; /* Max width to control layout */
+            margin: auto; /* Center it */
+            padding: 20px;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .go-back-container {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+        .go-back-btn {
+            color: #0066C0;
+            font-size: 16px;
+            text-decoration: underline;
+            cursor: pointer;
+            border: none;
+            background: none;
+            padding: 0;
+        }
+        .go-back-btn:hover {
+            color: #004080;
+        }
+        .checkout-section {
+            margin-bottom: 20px;
+        }
+        .checkout-section h2 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: #232F3E;
+        }
+        .checkout-section label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .checkout-section input[type="text"], 
+        .checkout-section input[type="tel"], 
+        .checkout-section select {
+            width: calc(100% - 20px); /* Adjust the width to account for padding */
+            padding: 10px; 
+            margin-bottom: 10px; 
+            border: 1px solid #ddd; 
+            border-radius: 5px; 
+            box-sizing: border-box; /* Include padding in width calculation */
+        }
+        .checkout-summary {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        .checkout-summary h3 {
+            font-size: 20px;
+            color: #232F3E;
+            margin-bottom: 10px;
+            margin: 0; /* Set margin to 0 to remove space */
+        }
+        .checkout-summary p {
+            font-size: 16px;
+            margin: 5px 0;
+        }
+        .checkout-summary .price {
+            font-weight: bold;
+            color: #B12704;
+        }
+        .place-order-btn {
+            background-color: #FFD814;
+            border: none;
+            padding: 15px 20px;
+            font-size: 18px;
+            width: 100%; /* Full width */
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+        .place-order-btn:hover {
+            background-color: #FFC107;
+        }
+        .blurred {
+            filter: blur(3px); /* Blur effect */
+            pointer-events: none; /* Disable interactions */
+        }
+        .footer {
+            background-color: #232F3E;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+        }
+        .footer-link {
+            color: #FFD814;
+            margin: 0 15px;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .footer-link:hover {
+            color: #FFC107;
+        }
+        .error-message {
+            color: red;
+            margin: 20px 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="header">
+    <a href="index.html" class="logo">LemonStore</a>
+</div>
+
+<!-- Main Content Wrapper -->
+<div class="main-content">
+    <!-- Checkout Container -->
+    <div class="checkout-container">
+
+        <!-- Go Back Button at the Top of the Form -->
+        <div class="go-back-container">
+            <button class="go-back-btn" onclick="window.history.back();">&larr; Go Back to Results</button>
+        </div>
+
+        <!-- Error Message -->
+        <div id="error-message" class="error-message" style="display:none;"></div>
+
+        <!-- Shipping Information -->
+        <div class="checkout-section">
+            <h2>Shipping Information</h2>
+            <label for="full-name">Full Name</label>
+            <input type="text" id="full-name" placeholder="Enter your full name">
+            
+            <label for="address">Address</label>
+            <input type="text" id="address" placeholder="Enter your address">
+            
+            <label for="state">State</label>
+            <input type="text" id="state" placeholder="Enter your state">
+
+            <label for="delivery-method">Delivery Method</label>
+            <select id="delivery-method">
+                <option value="cash-on-delivery">Cash on Delivery</option>
+                <option value="bank-transfer">Bank Transfer</option>
+                <option value="mytmoney">MytMoney</option>
+            </select>
+            
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" placeholder="Enter your phone number">
+        </div>
+
+        <!-- Order Summary -->
+        <div class="checkout-summary">
+            <h3>Order Summary</h3>
+            <p>Product Price: <span class="price" id="product-price">$0.00</span></p>
+            <p>Shipping: <span class="price" id="shipping-cost">$9.99</span></p>
+            <p>Tax: <span class="price" id="tax">$0.00</span></p>
+            <hr>
+            <p>Total: <span class="price" id="total">$0.00</span></p>
+            <button class="place-order-btn" id="place-order-btn" onclick="sendWhatsAppMessage()">Place your order</button>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+    <div class="footer-links">
+        <a href="#" class="footer-link">Customer Service</a>
+        <a href="#" class="footer-link">Privacy Policy</a>
+        <a href="#" class="footer-link">Terms & Conditions</a>
+        <a href="#" class="footer-link">About Us</a>
+    </div>
+    <p>&copy; 2024 LemonStore</p>
+</div>
+
+<script>
+    // Function to fetch product details from a JSON file
+    function fetchProductDetails() {
+        const params = new URLSearchParams(window.location.search);
+        const productId = params.get('id');
+
+        console.log('Product ID:', productId); // Debugging line
+
+        // Fetch product details from the JSON file
+        fetch('products.json')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Could not load product data');
+                }
+                return response.json();
+            })
+            .then(products => {
+                const product = products.find(p => p.id == productId); // Use == for comparison
+                if (!product) {
+                    throw new Error('Product not found');
+                }
+
+                const productPrice = 0.85 * product.price; // Adjust the price as needed
+                const tax = productPrice * 0.15; // Calculate tax as 15% of product price
+                const shippingCost = 9.99;
+                const total = productPrice + tax + shippingCost; // Total price calculation
+
+                // Update HTML with product price, tax, and total
+                document.getElementById('product-price').innerText = `$${productPrice.toFixed(2)}`;
+                document.getElementById('tax').innerText = `$${tax.toFixed(2)}`;
+                document.getElementById('total').innerText = `$${total.toFixed(2)}`;
+                document.getElementById('error-message').style.display = 'none'; // Hide error message if successful
+
+                // Enable the place order button
+                const placeOrderButton = document.getElementById('place-order-btn');
+                placeOrderButton.classList.remove('blurred'); // Remove blur class
+                placeOrderButton.disabled = false; // Enable button
+            })
+            .catch(error => {
+                console.error(error); // Log error for debugging
+                document.getElementById('error-message').innerText = error.message; // Show error message
+                document.getElementById('error-message').style.display = 'block'; // Show error message
+
+                // Blur the place order button and disable it
+                const placeOrderButton = document.getElementById('place-order-btn');
+                placeOrderButton.classList.add('blurred'); // Add blur class
+                placeOrderButton.disabled = true; // Disable button
+            });
+    }
+
+    // Call the function when the page loads
+    window.onload = fetchProductDetails;
+
+    // Function to send WhatsApp message
+    function sendWhatsAppMessage() {
+        const fullName = document.getElementById('full-name').value;
+        const address = document.getElementById('address').value;
+        const state = document.getElementById('state').value;
+        const deliveryMethod = document.getElementById('delivery-method').value;
+        const phoneNumber = document.getElementById('phone').value;
+        const productId = new URLSearchParams(window.location.search).get('id');
+
+        // Construct the message to send
+        const message = `Order Details:\nProduct ID: ${productId}\nFull Name: ${fullName}\nAddress: ${address}\nState: ${state}\nDelivery Method: ${deliveryMethod}\nPhone Number: ${phoneNumber}`;
+
+        // Send WhatsApp message
+        const whatsappNumber = '+23058102831'; // Replace with your WhatsApp number
+        const whatsappMessage = encodeURIComponent(message);
+        window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`);
+    }
+</script>
+
+</body>
+</html>

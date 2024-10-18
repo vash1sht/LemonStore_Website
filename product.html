@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Detail - LemonStore</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+        .header {
+            background-color: #232F3E;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #FFD814;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            text-decoration: none;
+        }
+
+        .product-detail {
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            max-width: 800px;
+        }
+        .product-detail img {
+            width: auto;
+            height: auto;
+            max-width: 300px; /* Limit the maximum width */
+            max-height: 400px; /* Limit the maximum height */
+            margin: 0 auto; /* Center the image */
+            display: block; /* Ensure block-level centering */
+            object-fit: contain; /* Ensure the image fits inside the container without being cropped */
+            border-radius: 5px;
+        }
+
+        .back-link {
+            display: block;
+            margin-bottom: 15px;
+            color: #0066C0;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .product-detail h2 {
+            font-size: 24px;
+            margin: 10px 0;
+        }
+        .product-detail p {
+            font-size: 18px;
+            color: #B12704;
+        }
+        .buy-now {
+            background-color: #FFA41C; /* Amazon-style orange */
+            border: 1px solid #E47911; /* Slight border */
+            border-radius: 3px;
+            padding: 12px 0; /* Increased padding for height */
+            font-size: 18px; /* Larger font for emphasis */
+            font-weight: bold; /* Bold text */
+            color: #111; /* Dark text */
+            text-align: center; /* Center the text */
+            text-decoration: none; /* Remove the underline */
+            display: block; /* Block element for full-width appearance */
+            width: 60%; /* Set to 60% of the container width */
+            margin: 20px auto; /* Center the button horizontally */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Slight shadow for a modern look */
+            cursor: pointer;
+            transition: background-color 0.3s ease; /* Smooth hover transition */
+        }
+
+        .buy-now:hover {
+            background-color: #FF8F00; /* Darker shade on hover */
+        }
+
+        .footer {
+            background-color: #232F3E;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+        }
+        .footer-link {
+            color: #FFD814;
+            margin: 0 15px;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .footer-link:hover {
+            color: #FFC107;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <div class="header">
+        <a href="index.html" class="logo">LemonStore</a>
+    </div>
+
+    <!-- Product Detail Section -->
+    <div class="product-detail">
+        <a href="index.html" class="back-link">&larr; Back to results</a>
+        <img id="product-image" src="" alt="Product Image">
+        <h2 id="product-name"></h2>
+        <p id="product-price"></p>
+        <p id="product-description"></p>
+        <a href="#" class="buy-now">Buy Now</a>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="footer-links">
+            <a href="#" class="footer-link">Customer Service</a>
+            <a href="#" class="footer-link">Privacy Policy</a>
+            <a href="#" class="footer-link">Terms & Conditions</a>
+            <a href="#" class="footer-link">About Us</a>
+        </div>
+        <p>&copy; 2024 LemonStore</p>
+    </div>
+
+    <script>
+        // Get URL parameters to extract product ID
+        const params = new URLSearchParams(window.location.search);
+        const productId = params.get('id');
+
+        if (!productId) {
+            window.location.href = 'index.html';
+        
+        } else {
+            // Fetch product details from the local products.json file
+        fetch('products.json')
+            .then(response => response.json())
+            .then(products => {
+                // Find the product with the matching ID
+                const product = products.find(p => p.id == productId);
+                if (product) {
+                    // Update the page with the product details
+                    document.getElementById('product-name').innerText = product.name;
+                    document.getElementById('product-price').innerText = `$ ${product.price.toFixed(2)}`;
+                    document.getElementById('product-description').innerText = product.description;
+                    document.getElementById('product-image').src = product.image;
+
+                    // Update the Buy Now link to the checkout page for the selected product
+                    document.querySelector('.buy-now').href = `checkout.html?id=${product.id}`;
+                } else {
+                    console.error('Product not found');
+                    // Optionally, display a message on the page if the product is not found
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching product data:', error);
+            });
+        }
+
+        
+    </script>
+
+</body>
+</html>
