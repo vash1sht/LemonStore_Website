@@ -35,7 +35,7 @@
       "id": 5,
       "name": "CarPlay Screen",
       "price": 2900,
-      "image": "LemonStore_Website/images/carplay_screen.jpg",
+      "image": "https://vash1sht.github.io/LemonStore_Website/images/carplay_screen.jpg",
       "description": "Remote control toy car.",
       "category": "electronics"
     }
