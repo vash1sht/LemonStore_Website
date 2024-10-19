@@ -43,7 +43,6 @@
 
         .search-bar input {
             width: 100%;
-            min-width: 200px; /* Ensure it doesn’t shrink too much */
             padding: 10px;
             border-radius: 5px;
             border: 1px solid #ddd;
@@ -58,7 +57,6 @@
             border-radius: 5px;
             cursor: pointer;
             font-size: 16px;
-            min-width: 80px; /* Ensure button has a minimum width */
         }
 
         .categories {
@@ -215,18 +213,14 @@
                 margin: 5px;
             }
 
-            .search-bar {
-                flex-direction: column; /* Stack input and button vertically */
-                align-items: stretch;   /* Make input and button full width */
-            }
-
             .search-bar input {
-                margin-right: 0; /* Remove margin for smaller layout */
-                margin-bottom: 10px; /* Space below the input */
+                font-size: 14px;
+                padding: 8px;
             }
 
             .search-bar button {
-                width: 100%; /* Make button full width */
+                padding: 8px;
+                font-size: 14px;
             }
 
             .product h2 {
@@ -322,30 +316,33 @@
             },
             methods: {
                 fetchProducts() {
-                    // Replace with your actual JSON file URL
+                    // Fetching products from the local JSON file
                     fetch('products.json')
                         .then(response => response.json())
                         .then(data => {
                             this.products = data;
+                        })
+                        .catch(error => {
+                            console.error('Error fetching products:', error);
                         });
+                },
+                searchProducts() {
+                    // Triggered when the search button is clicked, no additional logic needed due to computed property
                 },
                 filterProducts(category) {
                     this.activeCategory = category;
                 },
-                searchProducts() {
-                    // Triggered by the search button
-                    this.activeCategory = 'all'; // Reset category filter to show all products
-                },
                 viewProduct(product) {
-                    // Function to navigate to the product detail page
-                    console.log('Viewing product:', product);
+                    // Redirect to product details page
+                    window.location.href = `product.html?id=${product.id}`;
                 },
                 goToHome() {
-                    // Function to navigate to the home page
-                    console.log('Navigating to home');
+                    // Go back to the homepage
+                    window.location.href = 'index.html';
                 }
             }
         });
     </script>
+
 </body>
 </html>
