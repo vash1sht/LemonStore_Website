@@ -243,9 +243,9 @@
                 const total = productPrice + tax + shippingCost; // Total price calculation
 
                 // Update HTML with product price, tax, and total
-                document.getElementById('product-price').innerText = `$${productPrice.toFixed(2)}`;
-                document.getElementById('tax').innerText = `$${tax.toFixed(2)}`;
-                document.getElementById('total').innerText = `$${total.toFixed(2)}`;
+                document.getElementById('product-price').innerText = `Rs${productPrice.toFixed(2)}`;
+                document.getElementById('tax').innerText = `Rs${tax.toFixed(2)}`;
+                document.getElementById('total').innerText = `Rs${total.toFixed(2)}`;
                 document.getElementById('error-message').style.display = 'none'; // Hide error message if successful
 
                 // Enable the place order button

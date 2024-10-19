@@ -13,6 +13,7 @@
             background-color: #f4f4f4;
             overflow-x: hidden;
         }
+
         .header {
             background-color: #232F3E;
             color: white;
@@ -22,6 +23,7 @@
             justify-content: space-between;
             flex-wrap: wrap;
         }
+
         .logo {
             font-size: 24px;
             font-weight: bold;
@@ -29,6 +31,7 @@
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
             text-decoration: none;
         }
+
         .search-bar {
             display: flex;
             align-items: center;
@@ -37,6 +40,7 @@
             max-width: 600px;
             margin: 0 auto;
         }
+
         .search-bar input {
             width: 100%;
             padding: 10px;
@@ -45,6 +49,7 @@
             font-size: 16px;
             margin-right: 10px;
         }
+
         .search-bar button {
             padding: 10px 15px;
             background-color: #FFD814;
@@ -53,12 +58,14 @@
             cursor: pointer;
             font-size: 16px;
         }
+
         .categories {
             display: flex;
             justify-content: center;
             background-color: #37475A;
             padding: 10px 0;
         }
+
         .category {
             color: white;
             margin: 0 15px;
@@ -67,15 +74,18 @@
             text-decoration: none;
             transition: color 0.3s;
         }
+
         .category:hover {
             color: #FFD814;
         }
+
         .products {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
             padding: 20px;
         }
+
         .product {
             background: white;
             border: 1px solid #ddd;
@@ -85,25 +95,44 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             transition: transform 0.2s;
         }
+
         .product:hover {
             transform: scale(1.05);
         }
+
+        /* Product Image Container to control aspect ratio */
+        .product-image-container {
+            width: 100%;
+            height: 200px; /* Adjust height as needed */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
         .product img {
             width: auto;
-            height: auto;
+            height: 100%;
             max-width: 100%;
-            max-height: 200px;
             object-fit: contain;
+            transition: transform 0.2s;
         }
+
+        .product:hover img {
+            transform: scale(1.05);
+        }
+
         .product h2 {
             font-size: 18px;
             margin: 10px 0;
             cursor: pointer;
         }
+
         .product p {
             font-size: 16px;
             color: #B12704;
         }
+
         .buy-now {
             background-color: #FFD814;
             color: #111;
@@ -117,10 +146,12 @@
             text-decoration: none;
             font-weight: bold;
         }
+
         .buy-now:hover {
             background-color: #FFC107;
             transform: scale(1.05);
         }
+
         .footer {
             background-color: #232F3E;
             color: white;
@@ -128,18 +159,21 @@
             text-align: center;
             margin-top: 20px;
         }
+
         .footer-links {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
             margin-bottom: 10px;
         }
+
         .footer-link {
             color: #FFD814;
             margin: 0 15px;
             text-decoration: none;
             transition: color 0.3s;
         }
+
         .footer-link:hover {
             color: #FFC107;
         }
@@ -158,6 +192,10 @@
 
             .products {
                 grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+
+            .product-image-container {
+                height: 200px; /* Adjust height for mobile */
             }
 
             .product img {
@@ -197,6 +235,10 @@
                 font-size: 14px;
                 padding: 8px;
             }
+
+            .product-image-container {
+                height: 150px; /* Adjust height for smaller screens */
+            }
         }
     </style>
 </head>
@@ -223,7 +265,9 @@
         <!-- Products Section -->
         <div class="products">
             <div class="product" v-for="product in filteredProducts" :key="product.id">
-                <img :src="product.image" alt="Product Image">
+                <div class="product-image-container">
+                    <img :src="product.image" alt="Product Image">
+                </div>
                 <h2 @click="viewProduct(product)">{{ product.name }}</h2>
                 <p>$ {{ product.price.toFixed(2) }}</p>
                 <a :href="`product.html?id=${product.id}`" class="buy-now">Buy Now</a>
@@ -283,16 +327,17 @@
                         });
                 },
                 searchProducts() {
-                    // Triggered when the search button is clicked, no additional logic needed here
+                    // Triggered when the search button is clicked, no additional logic needed due to computed property
                 },
                 filterProducts(category) {
                     this.activeCategory = category;
                 },
                 viewProduct(product) {
-                    // Navigate to the product detail page (can be further customized)
+                    // Redirect to product details page
                     window.location.href = `product.html?id=${product.id}`;
                 },
                 goToHome() {
+                    // Go back to the homepage
                     window.location.href = 'index.html';
                 }
             }

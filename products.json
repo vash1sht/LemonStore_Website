@@ -1,5 +1,109 @@
 [
   {
+    "id": 1,
+    "name": "Smartphone",
+    "price": 699.99,
+    "image": "https://cdn.thewirecutter.com/wp-content/media/2024/05/smartphone-2048px-1013.jpg",
+    "description": "Latest smartphone with all features.",
+    "category": "electronics"
+  },
+  {
+    "id": 2,
+    "name": "Laptop",
+    "price": 1199.99,
+    "image": "https://www.techtarget.com/rms/onlineimages/hp_elitebook_mobile.jpg",
+    "description": "High performance laptop.",
+    "category": "electronics"
+  },
+  {
+    "id": 3,
+    "name": "T-shirt",
+    "price": 19.99,
+    "image": "https://nobero.com/cdn/shop/files/black_e4d19185-c19d-4e7c-a14a-8d2a29c7bad3.jpg",
+    "description": "Comfortable cotton t-shirt.",
+    "category": "fashion"
+  },
+  {
+    "id": 4,
+    "name": "Blender",
+    "price": 49.99,
+    "image": "https://via.placeholder.com/250",
+    "description": "High-speed blender for smoothies.",
+    "category": "home"
+  },
+  {
+    "id": 5,
+    "name": "CarPlay Screen",
+    "price": 2900,
+    "image": "https://vash1sht.github.io/LemonStore_Website/images/carplay_screen.jpg",
+    "description": "Remote control toy car.",
+    "category": "electronics"
+  },
+  {
+    "id": 6,
+    "name": "Headphones",
+    "price": 149.99,
+    "image": "https://cdn.thewirecutter.com/wp-content/media/2023/04/wireless-headphones.jpg",
+    "description": "Noise-canceling wireless headphones.",
+    "category": "electronics"
+  },
+  {
+    "id": 7,
+    "name": "Coffee Maker",
+    "price": 79.99,
+    "image": "https://via.placeholder.com/200",
+    "description": "Automatic coffee maker with timer.",
+    "category": "home"
+  },
+  {
+    "id": 8,
+    "name": "Running Shoes",
+    "price": 99.99,
+    "image": "https://via.placeholder.com/300",
+    "description": "Comfortable running shoes for all surfaces.",
+    "category": "fashion"
+  },
+  {
+    "id": 9,
+    "name": "Smartwatch",
+    "price": 299.99,
+    "image": "https://cdn.thewirecutter.com/wp-content/media/2023/06/smartwatch-2048px.jpg",
+    "description": "Smartwatch with health tracking features.",
+    "category": "electronics"
+  },
+  {
+    "id": 10,
+    "name": "Gaming Chair",
+    "price": 199.99,
+    "image": "https://via.placeholder.com/350",
+    "description": "Ergonomic gaming chair with adjustable settings.",
+    "category": "furniture"
+  },
+  {
+    "id": 11,
+    "name": "Electric Kettle",
+    "price": 29.99,
+    "image": "https://via.placeholder.com/150",
+    "description": "Fast boiling electric kettle.",
+    "category": "home"
+  },
+  {
+    "id": 12,
+    "name": "Bluetooth Speaker",
+    "price": 89.99,
+    "image": "https://via.placeholder.com/100",
+    "description": "Portable Bluetooth speaker with deep bass.",
+    "category": "electronics"
+  },
+  {
+    "id": 13,
+    "name": "Desk Lamp",
+    "price": 39.99,
+    "image": "https://via.placeholder.com/275",
+    "description": "LED desk lamp with adjustable brightness.",
+    "category": "home"
+  },
+  {
     "id": 14,
     "name": "Wireless Mouse",
     "price": 24.99,
