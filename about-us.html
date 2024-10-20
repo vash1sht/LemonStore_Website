@@ -29,6 +29,22 @@
         .content {
             padding: 20px;
         }
+        .go-back-button {
+            display: inline-block;
+            padding: 10px 15px;
+            margin-bottom: 20px;
+            background-color: #FFD814;
+            color: #232F3E;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        .go-back-button:hover {
+            background-color: #FFC107;
+        }
         .footer {
             background-color: #232F3E;
             color: white;
@@ -74,7 +90,8 @@
 
         <h2>Contact Us</h2>
         <p>If you have any questions, feel free to reach out at info@lemonstore.com.</p>
-    </div>
+        <!-- Go Back button using JavaScript for browser history navigation -->
+        <button class="go-back-button" onclick="window.history.back()">Go Back</button>    </div>
 
     <div class="footer">
         <div class="footer-links">
