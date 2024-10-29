@@ -1,21 +1,28 @@
 [
   {
-    "id": 5,
+    "id": 1,
     "name": "CarPlay Screen",
     "price": 2900,
     "image": [
       "https://vash1sht.github.io/LemonStore_Website/images/carplay_screen.jpg",
       "https://www.techtarget.com/rms/onlineimages/hp_elitebook_mobile.jpg"
     ],
-    "description": "Remote control toy car.",
+    "description": [
+      "High-quality sound.",
+      "Compact design.",
+      "10 hours battery life."
+    ],
     "category": "automotive_electronics"
   },
   {
     "id": 2,
     "name": "Tecno Pop 7",
     "price": 3990,
-    "image": ["https://www.techtarget.com/rms/onlineimages/hp_elitebook_mobile.jpg"],
-    "description": "High performance laptop.",
+    "image": ["https://vash1sht.github.io/LemonStore_Website/images/tecno_pop_7.jpg"],
+    "description": [
+      "High-quality sound.",
+      "Compact design.",
+      "10 hours battery life."],
     "category": "electronics"
   },
   {
@@ -23,7 +30,11 @@
     "name": "T-shirt",
     "price": 19.99,
     "image": ["https://nobero.com/cdn/shop/files/black_e4d19185-c19d-4e7c-a14a-8d2a29c7bad3.jpg"],
-    "description": "Comfortable cotton t-shirt.",
+    "description": [
+      "High-quality sound.",
+      "Compact design.",
+      "10 hours battery life."
+    ],
     "category": "fashion"
   },
   {
@@ -35,7 +46,7 @@
     "category": "home"
   },
   {
-    "id": 1,
+    "id": 5,
     "name": "Smartphone",
     "price": 699.99,
     "image": ["https://cdn.thewirecutter.com/wp-content/media/2024/05/smartphone-2048px-1013.jpg"],

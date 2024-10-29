@@ -94,6 +94,16 @@
             color: #B12704;
         }
 
+        .product-description {
+            margin: 10px 0;
+            font-size: 16px;
+        }
+
+        .product-description ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+
         .buy-now {
             background-color: #FFA41C;
             border: 1px solid #E47911;
@@ -164,7 +174,7 @@
 
         <h2 id="product-name"></h2>
         <p id="product-price"></p>
-        <p id="product-description"></p>
+        <div id="product-description" class="product-description"></div>
         <a href="#" class="buy-now">Buy Now</a>
     </div>
 
@@ -195,7 +205,10 @@
                     if (product) {
                         document.getElementById('product-name').innerText = product.name;
                         document.getElementById('product-price').innerText = `Rs ${product.price.toFixed(2)}`;
-                        document.getElementById('product-description').innerText = product.description;
+                        
+                        // Create bullet point list for product description
+                        const descriptionElement = document.getElementById('product-description');
+                        descriptionElement.innerHTML = '<ul>' + product.description.map(item => `<li>${item}</li>`).join('') + '</ul>';
     
                         const mainImageElement = document.getElementById('main-product-image');
                         const thumbnailGallery = document.getElementById('thumbnail-gallery');
@@ -206,7 +219,7 @@
                             mainImageElement.src = product.image[0];
     
                             // Add thumbnails for the rest of the images
-                            product.image.forEach((image, index) => {
+                            product.image.forEach((image) => {
                                 const imgElement = document.createElement('img');
                                 imgElement.src = image;
                                 imgElement.alt = 'Product Thumbnail';
@@ -236,7 +249,6 @@
                 });
         }
     </script>
-    
 
 </body>
 </html>
